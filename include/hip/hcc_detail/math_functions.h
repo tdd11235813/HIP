@@ -22,6 +22,7 @@ THE SOFTWARE.
 
 #pragma once
 
+#include "hip_fp16_math_fwd.h"
 #include "math_fwd.h"
 
 #include <hip/hcc_detail/host_defines.h>
@@ -1163,6 +1164,16 @@ long long llabs(long long x)
     long long abs(long long x) { return llabs(x); }
 #endif
 // END INTEGER
+
+__DEVICE__
+inline _Float16 fma(_Float16 x, _Float16 y, _Float16 z) {
+    return __ocml_fma_f16(x, y, z);
+}
+
+__DEVICE__
+inline float fma(float x, float y, float z) {
+    return fmaf(x, y, z);
+}
 
 #pragma push_macro("__DEF_FLOAT_FUN")
 #pragma push_macro("__DEF_FLOAT_FUN2")
