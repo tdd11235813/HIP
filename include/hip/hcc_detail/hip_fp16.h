@@ -29,6 +29,8 @@ THE SOFTWARE.
     #include <utility>
 #endif
 
+#include "hip/hcc_detail/hip_fp16.h"
+
 #if defined(__clang__) && (__clang_major__ > 3)
     typedef _Float16 _Float16_2 __attribute__((ext_vector_type(2)));
 

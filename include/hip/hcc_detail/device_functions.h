@@ -27,13 +27,14 @@ THE SOFTWARE.
 #include "math_fwd.h"
 
 #include <hip/hip_runtime_api.h>
-#include <hip/hip_vector_types.h>
-#include <hip/hcc_detail/device_library_decls.h>
-#include <hip/hcc_detail/llvm_intrinsics.h>
 #include <stddef.h>
 
 typedef unsigned long ulong;
 typedef unsigned int uint;
+
+#include <hip/hip_vector_types.h>
+#include <hip/hcc_detail/device_library_decls.h>
+#include <hip/hcc_detail/llvm_intrinsics.h>
 
 /*
 Integer Intrinsics
