@@ -989,4 +989,27 @@ static inline __device__ void* memset(void* ptr, int val, size_t size) {
     unsigned char val8 = static_cast<unsigned char>(val);
     return __hip_hc_memset(ptr, val8, size);
 }
+
+/** @{ */
+/**
+ * Find the first bit set to 1 in a number starting from the
+ * least significant bit
+ *
+ * Please refer to <a href="http://www.hsafoundation.com/html/Content/PRM/Topics/05_Arithmetic/bit_string.htm">HSA PRM 5.7</a> for more detailed specification of these functions.
+ */
+extern "C" inline __device__ unsigned int __lastbit_u32_u32(unsigned int input) {
+  return input == 0 ? -1 : __builtin_ctz(input);
+}
+
+extern "C" inline __device__ unsigned int __lastbit_u32_u64(unsigned long long int input) {
+  return input == 0 ? -1 : __builtin_ctzl(input);
+}
+
+extern "C" inline __device__ unsigned int __lastbit_u32_s32(int input) {
+  return __lastbit_u32_u32(input);
+}
+
+extern "C" inline __device__ unsigned int __lastbit_u32_s64(unsigned long long input) {
+  return __lastbit_u32_u64(input);
+}
 #endif
